@@ -31,7 +31,7 @@ Frameworks: Materialize CSS, express, jquery, sequelize
 
 - server.js (Horacio)
 - connection.js (Horacio)
-- orm.js (Chris)
+- apiroutes.js (Chris)
 - controller.js (Brandon)
 - model.js (Brandon)
 - jquery.js (Chris)
