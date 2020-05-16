@@ -6,13 +6,16 @@
 // Add a flag for complete so that it's false by default if not given a value
 
 module.exports = function (sequelize, DataTypes) {
-  var Project = sequelize.define("Project", {
-    text: DataTypes.STRING,
-    allowNull: false,
+  var quote = sequelize.define("quote", {
+    text: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     complete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
   });
-  return Project;
+  return quote;
 };

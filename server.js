@@ -1,22 +1,20 @@
 const express = require("express");
-const path = require("path");
 const exphbs = require("express-handlebars");
 
-const PORT = process.env.PORT || 3000;
-
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-// Serve static content for the app from the 'public' directory
-app.use(express.static(process.cwd() + "/public"));
+const db = require("./models");
 
-// Set Handlebars as the view engine
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// Import routes and give the server access to them
+app.use(express.static("public"));
 
-var routes = require("./routes/api-routes");
+require("./routes/api-routes.js")(app);
 
-app.use("/", routes);
-
-app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
+db.sequelize.sync({ force: false }).then(function () {
+  app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
+  });
+});
