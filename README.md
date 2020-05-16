@@ -30,18 +30,10 @@ Frameworks: Materialize CSS, express, jquery, sequelize
 ### To do:
 
 - server.js (Horacio)
-- connection.js (Horacio)
+- api-routes.js (Chris)
 - orm.js (Chris)
-- controller.js (Brandon)
 - model.js (Brandon)
 - jquery.js (Chris)
 - schema.sql (Horacio)
 - index.handlebars (Brandon)
 - main.handlebars (Brandon)
-
-#### My Todos
-
-- set password db, using root username.
-- get schema from horacio
-
-- discuss validation w Passport
