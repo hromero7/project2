@@ -11,6 +11,10 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+// Set Handlebars as the view engine
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 require("./routes/api-routes.js")(app);
 
 db.sequelize.sync({ force: false }).then(function () {
