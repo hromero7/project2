@@ -41,7 +41,4 @@ Frameworks: Materialize CSS, express, jquery, sequelize
 
 #### My Todos
 
-- set password db, using root username.
-- get schema from horacio
-
-- discuss validation w Passport
+cards for search results
