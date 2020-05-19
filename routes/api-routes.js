@@ -20,6 +20,8 @@ module.exports = function (app) {
     })
     })
 
+
+    // fix post api route, errorin posting to database
     app.post("/api/travel", function(req,res){
         db.places.create(req,body).then(function(dbTravel){
             res.json(dbTravel);
