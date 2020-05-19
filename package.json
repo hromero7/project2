@@ -4,7 +4,9 @@
   "description": "[Flightscanner](https://rapidapi.com/skyscanner/api/skyscanner-flight-search/endpoints) for ticket booking searches",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "sass ./views/scss/app.scss ./public/assets/css/app.css",
+    "watch-css": "sass --watch ./views/scss/app.scss ./public/assets/css/app.css"
   },
   "repository": {
     "type": "git",
@@ -20,7 +22,11 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
+    "materialize-css": "^1.0.0-rc.2",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.8"
+  },
+  "devDependencies": {
+    "sass": "^1.26.5"
   }
 }
