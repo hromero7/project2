@@ -1,42 +1,19 @@
-<h1>Eat-Da-Burger!</h1>
 
-<main>
-    <div class="container">
-        <div class="row">
-            <div class="col s6">
-                {{#each burgers}}
-                {{#unless this.devoured}}
-                <div>
-                    <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                        <button type="submit" class='search-form'> {{this.burger_name}}</button>
-                    </form>
-                </div>
-                {{/unless}}
-                {{/each}}
+<nav>
+    <div class="nav-wrapper blue">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+
             </div>
-
-            <div class="col s6">
-                {{#each burgers}}
-                {{#if this.devoured}}
-                <div class='burgerEaten'>
-                    <div>
-                        {{this.burger_name}}
-                    </div>
-                </div>
-                {{/if}}
-                {{/each}}
-            </div>
-        </div>
-    </div>
-</main>
-
-<h2>Add A Burger Option</h2>
-
-<div class="row">
-    <div class="col s12">
-        <form action="/burgers" method="POST">
-            <input type="text" id="name" name="burger_name" placeholder="Uber Delicious Burger">
-            <button type="submit" class="addBurgerButton">Add The Burger</button>
         </form>
     </div>
-</div>
+</nav>
+{{!-- form for search bar --}}
+<img src="/assets/img/plane.jpg" width="400px" id="airplane">
+
+<h1>This is the Body</h1>
+
+<div class="blue"></div>

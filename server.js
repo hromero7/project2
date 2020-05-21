@@ -1,5 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -20,7 +21,6 @@ require("./routes/api-routes.js")(app);
 const routes = require("./controllers/controller.js");
 
 app.use(routes);
-
 
 db.sequelize.sync({ force: false }).then(function () {
   app.listen(PORT, function () {
