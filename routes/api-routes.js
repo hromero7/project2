@@ -5,31 +5,30 @@ module.exports = function (app) {
     app.get("/api/travel", function ( req, res){
 
         // app.get to join three table information queries
-        var query = {};
-        if (req.query.qoutes_id){
-            query.qoutesId = req.query.qoutes_id
-        }
+        // var query = {};
+        // if (req.query.outbound_originId){
+        //     query.qoutesId = req.query.qoutes_id
+        // }
 
-    db.places.findAll({
-        where: query,
-        include: [{
-            model: db.qoutes
-        }]
+    db.Quote.findAll({
+        // where: query,
+        // include: [{
+        //     model: db.Place,
+        //     where: db.Place.placeId
+        // }]
     }).then(function(dbTravel){
         res.json(dbTravel)
     })
     })
 
-
-    // fix post api route, errorin posting to database
     app.post("/api/travel", function(req,res){
-        db.places.create(req,body).then(function(dbTravel){
+        db.Quote.create(req.body).then(function(dbTravel){
             res.json(dbTravel);
         })
     })
 
     app.delete("/api/travel/:id",function(req,res){
-        db.places.destroy({
+        db.Quote.destroy({
             where: {
                 id: req.params.id
             }
