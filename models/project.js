@@ -6,16 +6,58 @@
 // Add a flag for complete so that it's false by default if not given a value
 
 module.exports = function (sequelize, DataTypes) {
-  var quote = sequelize.define("quote", {
-    text: {
-      type: DataTypes.STRING,
+  var Quote = sequelize.define("Quote", {
+    price: {
+      type: DataTypes.DECIMAL(10,2),
       allowNull: false,
     },
-
-    complete: {
+    direct: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
-  });
-  return quote;
+    outbound_carrierId: {
+      type: DataTypes.INTEGER, 
+      allowNull: false
+     },
+    outbound_originId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    outbound_destinationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    outbound_departure: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    inbound_carrierId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    inbound_originId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    inbound_destinationId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    inbound_departure: {
+      type: DataTypes.DATE,
+      allowNull: false
+    },
+    quote_date: {
+      type: DataTypes.DATE,
+      allowNull: false
+    }
+    
+  },
+  {timestamps: false});
+  // Quote.associate = function(models) {
+  //   Quote.hasMany(models.Place, {
+  //     onDelete: "cascade"
+  //   });
+  // };
+  return Quote;
 };
