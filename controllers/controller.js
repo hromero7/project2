@@ -9,6 +9,9 @@ router.get("/", function (req, res) {
   res.render("main.handlebars");
 });
 
+// use axios to render information to handlebars and have it thrown into the main page
+
+
 router.get("/main", function (req, res) {
   // express callback response by calling burger.selectAllBurger
   //   burger.all(function(burgerData) {
