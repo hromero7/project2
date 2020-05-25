@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // event handlers for the buttons and search results
     $("#search-form").on("submit", handleFormSubmit);
     $("#delete").on("click", handleDeleteButton);
     $("#get").on("click", handleGetButton);
@@ -43,14 +44,17 @@ $(document).ready(function () {
             }
             $.ajax(settings).done(function (response) {
                 console.log(response);
+                
             });
+            return data
         });
-        // return data
 
+        // returns the data from the api call
     }
 
     function handleGetButton(event) {
         console.log("Calling database...");
+        // get data from the database, update the api route to handle get
         $.get("/api/travel" + id, function (data) {
             console.log("places", data)
         })
@@ -82,8 +86,9 @@ $(document).ready(function () {
             inbound_departure: $("#inbound-depart").text().trim(),
             quote_date: $("#qoute-date").text().trim()
         }
-        $.post("/api/travel", newTrip).then(newTrip)
-        $.ajax("/api/travel/" + id, {
+        console.log(newTrip);
+        $.post("/api/price", newTrip).then(newTrip)
+        $.ajax("/api/price/" + id, {
             type: "PUT",
             data: newTrip
         }).then(function () {
@@ -107,6 +112,7 @@ $(document).ready(function () {
             city_id: $("#city-id").text().trim(),
             country_name: $("#country-name").text().trim(),
         }
+        console.log(newPlace)
         $.post("/api/travel", newPlace).then(newPlace)
         $.ajax("/api/travel/" + id, {
             type: "PUT",
@@ -122,11 +128,10 @@ $(document).ready(function () {
         var newCarrier = {
             carrier_id: $("#carrier-id").text().trim(),
             name: $("#carrier-name").text().trim(),
-
-
         }
-        $.post("/api/travel", newCarrier).then(newCarrier)
-        $.ajax("/api/travel/" + id, {
+        console.log(newCarrier)
+        $.post("/api/carrier", newCarrier).then(newCarrier)
+        $.ajax("/api/carrier/" + id, {
             type: "PUT",
             data: newCarrier
         }).then(function () {
