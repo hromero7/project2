@@ -5,6 +5,13 @@ const project = require("../models/project.js");
 
 // get route -> index
 router.get("/", function (req, res) {
+  project.selectAll(function (data) {
+    var hbsObject = {
+      app: data,
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject);
+  });
   res.redirect("main");
   res.render("main.handlebars");
 });
@@ -18,3 +25,4 @@ router.get("/main", function (req, res) {
 });
 
 module.exports = router;
+//route

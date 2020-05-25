@@ -1,5 +1,7 @@
-$font-stack: Helvetica, sans-serif;
-$primary-color: #fe4fe4;
+$font-stack: 'Trade Winds',
+cursive,
+sans-serif;
+$primary-color: #fe4f;
 
 body {
   font: 100% $font-stack;
@@ -15,6 +17,8 @@ nav {
 
   li {
     display: inline-block;
+    // background-color: red;
+    // height: 200px;
   }
 
   a {
@@ -23,7 +27,7 @@ nav {
     text-decoration: none;
   }
 
-  .nav-wrapper {
-    @extend .blue !optional;
-  }
+  // .nav-wrapper {
+  //   @extend .blue !optional;
+  // }
 }

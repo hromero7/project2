@@ -41,4 +41,7 @@ Frameworks: Materialize CSS, express, jquery, sequelize
 
 #### My Todos
 
-cards for search results
+- get search results to console log
+- use get cats = data from catexample for handlebars rendering
+- RENDER SEARCH RESULTS ON PAGE
+- Add submit button in hbs - .click instead of submit.
