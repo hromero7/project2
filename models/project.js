@@ -53,11 +53,12 @@ module.exports = function (sequelize, DataTypes) {
     }
     
   },
+
   {timestamps: false});
-  // Quote.associate = function(models) {
-  //   Quote.hasMany(models.Place, {
-  //     onDelete: "cascade"
-  //   });
-  // };
+  // changed to hasOne
+  // change foreign key to same name on both tables
+  Quote.associate = function(models) {
+    Quote.hasOne(models.Place);
+  };
   return Quote;
 };

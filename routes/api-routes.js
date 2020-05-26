@@ -12,10 +12,10 @@ module.exports = function (app) {
 
     db.Quote.findAll({
         // where: query,
-        // include: [{
-        //     model: db.Place,
-        //     where: db.Place.placeId
-        // }]
+        include: [{
+            model: db.Place,
+            // where: db.Place.placeId
+        }]
     }).then(function(dbTravel){
         res.json(dbTravel)
     })
