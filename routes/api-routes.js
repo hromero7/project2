@@ -9,7 +9,6 @@ module.exports = function (app) {
         // if (req.query.outbound_originId){
         //     query.qoutesId = req.query.qoutes_id
         // }
-
     db.Quote.findAll({
         // where: query,
         include: [{
@@ -18,14 +17,46 @@ module.exports = function (app) {
         }]
     }).then(function(dbTravel){
         res.json(dbTravel)
-    })
-    })
+    });
+    });
+
+    //place api route
+    app.get("/api/place", function(req, res) {
+        db.Place.findAll({}).then(function(dbPlace){
+            res.json(dbPlace);
+        });
+    });
+
+    //carrier api route
+
+    app.get("/api/carrier", function(req, res) {
+        db.Carrier.findAll({}).then(function(dbCarrier) {
+            res.json(dbCarrier);
+        });
+    });
+
+    //POST ROUTES
 
     app.post("/api/travel", function(req,res){
         db.Quote.create(req.body).then(function(dbTravel){
             res.json(dbTravel);
-        })
-    })
+        });
+    });
+
+    // route to qoutes table
+    app.post("/api/price", function(req,res){
+        db.Place.create(req.body).then(function(dbPlace){
+            res.json(dbPlace);
+        });
+    });
+    // route to carrier table
+    app.post("/api/carrier", function(req,res){
+        db.Carrier.create(req.body).then(function(dbCarrier){
+            res.json(dbCarrier);
+        });
+    });
+
+
 
     // route to qoutes table
     app.post("/api/price", function(req,res){
