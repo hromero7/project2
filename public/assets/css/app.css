@@ -1,6 +1,16 @@
 body {
   font: 100% Helvetica, sans-serif;
   color: #fe4fe4;
+  
+}
+
+.bg-img{
+  background-image: url('../img/silhouette-of-person-in-airport-227690.jpg');
+  filter:blur(8px);
+  -webkit-filter: blur(8px);
+  height:100%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 nav ul {

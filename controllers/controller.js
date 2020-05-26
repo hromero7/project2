@@ -5,9 +5,12 @@ const project = require("../models/project.js");
 
 // get route -> index
 router.get("/", function (req, res) {
-  res.redirect("main");
-  res.render("main.handlebars");
+  res.redirect("/main");
+//   res.render("main");
 });
+
+// use axios to render information to handlebars and have it thrown into the main page
+
 
 router.get("/main", function (req, res) {
   // express callback response by calling burger.selectAllBurger
