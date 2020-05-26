@@ -32,15 +32,11 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         }
-      
+
     },
-    {timestamps: false});
-    // Place.associate = function(models) {
-    //     Place.belongsTo(models.Quote, {
-    //         outbound_originId: {
-    //             allowNull: false
-    //         }
-    //     });
-    // }
+        { timestamps: false });
+    Place.associate = function(models) {
+        Place.belongsTo(models.Quote);
+    }
     return Place;
-  };
+};
