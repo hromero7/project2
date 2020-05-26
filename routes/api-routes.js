@@ -58,6 +58,21 @@ module.exports = function (app) {
 
 
 
+    // route to qoutes table
+    app.post("/api/price", function(req,res){
+        db.qoutes.create(req,body).then(function(dbTravel){
+            res.json(dbTravel);
+        })
+    })
+    // route to carrier table
+    app.post("/api/carrier", function(req,res){
+        db.carriers.create(req,body).then(function(dbTravel){
+            res.json(dbTravel);
+        })
+    })
+
+
+
     app.delete("/api/travel/:id",function(req,res){
         db.Quote.destroy({
             where: {

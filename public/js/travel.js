@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
+   var flightInfo = {};
+   flightInput = [];
     // event handlers for the buttons and search results
-    $("#search-form").on("click", handleFormSubmit);
+    $("#search-form").on("submit", handleFormSubmit);
     $("#delete").on("click", handleDeleteButton);
     $("#get").on("click", handleGetButton);
     $("#save").on("click", handleSaveButton);
@@ -44,9 +46,12 @@ $(document).ready(function () {
             }
             $.ajax(settings).done(function (response) {
                 console.log(response);
-                
+              
+                getFlights(response);
+                return response;
+
             });
-            return data
+          
         });
 
         // returns the data from the api call
@@ -140,4 +145,27 @@ $(document).ready(function () {
         })
     }
 
+
+    function getFlights(response){
+        $("#results").html("<h4></h4>").text("Browse Flights for " + origin);
+
+        for (i=0;i<data.length;i++){
+            var col = $("<div>").addClass("col s12 m7");
+            var card = $("<div>").addClass("card");
+            var title = $("<span>").addClass("card-title").text(data.Places[i].CountryName + ", " + data.Places[i].Name);
+            var button = $("button").addClass("btn-floating halfway-fab waves-effect waves-light red")
+            var content = $("<div>").addClass("card-content");
+            var p1 = $("<p>").addClass("card-text").text("City: " + data.Places[i].CityName);
+            var p2 = $("<p>").addClass("card-text").text("Carrier: " + data.Carriers[i].Name);
+            var p2 = $("<p>").addClass("card-text").text("Price: " + data.Qoutes[i].MinPrice);
+            var p2 = $("<p>").addClass("card-text").text("Departure: " + data.Qoutes[i].OutboundLeg.DepartureDate);
+            var p2 = $("<p>").addClass("card-text").text("Departure: " + data.Qoutes[i].InboundLeg.DepartureDate);
+            // merge together and put on page
+            col.append(card.append(body.append(title, button, p1, p2)));
+
+            // append onto the row
+            // $("#results .row").append(col);
+        }
+        console.log("Search Completed")
+    }
 });
