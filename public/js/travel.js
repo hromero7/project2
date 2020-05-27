@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         $.ajax(settings).done(function (response) {
             // console.log(response);
-            console.log(dest)
+            // console.log(dest)
         }).then(function (data) {
             var country = data.Places[0].CountryId
             // second api call goes here with variables first call
@@ -46,6 +46,7 @@ $(document).ready(function () {
             }
             $.ajax(settings).done(function (response) {
                 console.log(response);
+              
                 getFlights(response);
                 return response;
 
@@ -143,6 +144,7 @@ $(document).ready(function () {
             location.reload();
         })
     }
+
 
     function getFlights(response){
         $("#results").html("<h4></h4>").text("Browse Flights for " + origin);
