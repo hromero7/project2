@@ -4,6 +4,14 @@ body {
   
 }
 
+.container{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height:100%;
+  margin: auto;
+  position:fixed;
+}
+
 .bg-img{
   background-image: url('../img/silhouette-of-person-in-airport-227690.jpg');
   filter:blur(8px);
@@ -26,5 +34,6 @@ nav a {
   padding: 6px 12px;
   text-decoration: none;
 }
+
 
 /*# sourceMappingURL=app.css.map */

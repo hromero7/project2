@@ -1,0 +1,16 @@
+               {{#each this}}
+               <p id="price">{{price}}</p>
+                <p id="quote-date">{{qoute}}</p>
+                <span class="card-title">Departure</span>
+                <p id="outbound-origin">Airport: {{depart}}</p>
+                {{!-- inbound carrier partial --}}
+                <p id="outbound-depart">Departure Time: {{departTime}}</p>
+                <p id="destination">Destination: {{dest}}</p>
+                <span class="card-title">Return</span>
+                <p id="inbound-origin">Airport: {{homeBound}}</p>
+                {{!-- outbund carrier partial --}}
+                <p id="inbound-depart">Departure Time: {{homeTime}}</p>
+                <p id="inbound-destination">Destination: {{homeDest}}</p>
+            {{/each}}
+
+            {{!-- information from array is data.Quotes[i].MinPrice, data.Quotes[i].OutboundLeg.DepartureDate,data.Quotes[i].InboundLeg.DepartureDate --}}
