@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const project = require("../models/project.js");
+const project = require("../models/quotes.js");
 
 // get route -> index
 router.get("/", function (req, res) {
@@ -10,16 +10,19 @@ router.get("/", function (req, res) {
 
 // renders the search result query
 // router.get("/main",function(req,res){
-//   var hbsObject = {
-//     qoute: data
-//   }
-//   console.log(hbsObject)
+
+// //   var hbsObject = {
+// //     qoute: data
+// //   }
+// //   console.log(hbsObject)
 // })
+
 
 // renders the get result query
 router.get("/main/travel",function(req,res){
 res.render("saved");
 })
+
 
 router.get("/main", function (req, res) {
   // express callback response by calling burger.selectAllBurger
@@ -29,4 +32,7 @@ router.get("/main", function (req, res) {
   //   });
 });
 
+router.get("/bookmarks", function(req, res) {
+    res.render("bookmark");
+});
 module.exports = router;

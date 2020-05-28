@@ -1,7 +1,26 @@
 var db = require("../models")
 
 
+
 module.exports = function (app) {
+    const placeCall = ()=> {
+        db.Place.findAll({}).then(function(dbPlace) {
+           for (let i = 0; i < dbPlace.length; i++) {
+            console.log(dbPlace[i].dataValues);
+            }
+            // console.log(dbPlace[1].dataValues)
+        });
+        };
+
+    const carrierCall = () => {
+        db.Carrier.findAll({}).then(function(dbCarrier) {
+            for (let i = 0; i < dbCarrier.length; i++) {
+                console.log(dbCarrier[i].dataValues);
+            }
+        });
+    }
+            
+    
     app.get("/api/travel", function ( req, res){
 
         // app.get to join three table information queries
@@ -11,12 +30,11 @@ module.exports = function (app) {
         // }
     db.Quote.findAll({
         // where: query,
-        include: [{
-            model: db.Place,
-            // where: db.Place.placeId
-        }]
+       
     }).then(function(dbTravel){
-        res.json(dbTravel)
+        res.json(dbTravel);
+        placeCall();
+        carrierCall();
     });
     });
 

@@ -35,8 +35,8 @@ module.exports = function (sequelize, DataTypes) {
 
     },
         { timestamps: false });
-    Place.associate = function(models) {
-        Place.belongsTo(models.Quote);
-    }
+    // Place.associate = function(models) {
+    //     Place.belongsTo(models.Quote);
+    // }
     return Place;
 };
