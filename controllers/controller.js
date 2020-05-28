@@ -10,11 +10,19 @@ router.get("/", function (req, res) {
 
 // renders the search result query
 // router.get("/main",function(req,res){
+
 // //   var hbsObject = {
 // //     qoute: data
 // //   }
 // //   console.log(hbsObject)
 // })
+
+
+// renders the get result query
+router.get("/main/travel",function(req,res){
+res.render("saved");
+})
+
 
 router.get("/main", function (req, res) {
   // express callback response by calling burger.selectAllBurger
