@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/hromero7/project2#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "materialize-css": "^1.0.0-rc.2",

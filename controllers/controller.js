@@ -16,10 +16,7 @@ router.get("/", function (req, res) {
 //   console.log(hbsObject)
 // })
 
-// renders the get result query
-router.get("/main/travel",function(req,res){
-res.render("saved");
-})
+
 
 router.get("/main", function (req, res) {
   // express callback response by calling burger.selectAllBurger

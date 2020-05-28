@@ -16,43 +16,52 @@ $(document).ready(function () {
         var origin = $("#origin").val().trim();
         var inbound = $("#depart").val().trim();
         var outbound = $("#return").val().trim();
-        var settings = {
-            "async": true,
-            "crossDomain": true,
-            "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/" +
-                origin + "/USD/en-US/?query=" + destination,
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-                "x-rapidapi-key": "32fc3296c6mshf0fe9b6337eb5a9p1804a9jsnf2f36e2db290"
-            }
-        }
-
-        $.ajax(settings).done(function (response) {
-            // console.log(response);
-            // console.log(dest)
-        }).then(function (data) {
-            console.log("Is this one getting called right")
-            var country = data.Places[0].CountryId
-            // second api call goes here with variables first call
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/" +
-                    "US/USD/en-US/" + "SFO-sky/" + country + "/" + inbound + "?inboundpartialdate=" + outbound,
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "32fc3296c6mshf0fe9b6337eb5a9p1804a9jsnf2f36e2db290"
-                }
-            }
-            $.ajax(settings).then(function (response) {
-                console.log("API Done")
-                getFlights(response)
-                
-            });
-
+        console.log(destination);
+        console.log(origin)
+        $.post("/api/axios", {
+            origin: origin,
+            destination: destination,
+            inbound: inbound,
+            outbound: outbound
+        }).then(function(){
+            console.log(data);
+            console.log("Has been done")
+            // location.reload()
         })
+        // var settings = {
+        //     "async": true,
+        //     "crossDomain": true,
+        //     "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/" +
+        //         origin + "/USD/en-US/?query=" + destination,
+        //     "method": "GET",
+        //     "headers": {
+        //         "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+        //         "x-rapidapi-key": "32fc3296c6mshf0fe9b6337eb5a9p1804a9jsnf2f36e2db290"
+        //     }
+        // }
+        // $.ajax(settings).done(function (response) {
+        //     // console.log(response);
+        //     // console.log(dest)
+        // }).then(function (data) {
+        //     console.log("Is this one getting called right")
+        //     var country = data.Places[0].CountryId
+        //     // second api call goes here with variables first call
+        //     var settings = {
+        //         "async": true,
+        //         "crossDomain": true,
+        //         "url": "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/" +
+        //             "US/USD/en-US/" + "SFO-sky/" + country + "/" + inbound + "?inboundpartialdate=" + outbound,
+        //         "method": "GET",
+        //         "headers": {
+        //             "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
+        //             "x-rapidapi-key": "32fc3296c6mshf0fe9b6337eb5a9p1804a9jsnf2f36e2db290"
+        //         }
+        //     }
+        //     $.ajax(settings).then(function (response) {
+        //         console.log(response)
+        //         getFlights(response)
+        //     });
+        // })
 
         // returns the data from the api call
     }
@@ -152,23 +161,30 @@ $(document).ready(function () {
     // card generation for search results when browsing qoutes
     const  getFlights = (data) => {
         console.log("Is getting called...")
-        // $("#results").html("<h4></h4>").text("Browse Flights for " + data.Places[i].CountryName);
-        console.log(data);
-        for (var i = 0; i < data.Places.length; i++) {
-            $("#results").html("<h4></h4>").text("Browse Flights for " + data.Places[i].CountryName);
-            var col = $("<div>").addClass("col s12 m7");
-            var card = $("<div>").addClass("card");
-            var title = $("<span>").addClass("card-title").text(data.Places[i].CountryName);
-            title.attr("id", "country-name");
-            var button = $("button").addClass("btn-floating halfway-fab waves-effect waves-light red")
-            button.attr("id", "save");
-            var content = $("<div>").addClass("card-content");
-            var p1 = $("<p>").addClass("card-text").text("City: " + data.Places[i].CityName);
-            p1.attr("id", "city-name");
-            // for loop for carrier array
-            // handle bar partial 
-            var p2 = $("<p>").addClass("card-text").text("Carrier: " + data.Carriers[0].Name);
-            p2.attr("id", "carrier-name");
+
+        $("#results").html("<h4></h4>").text("Browse Flights for " + data.Places[i].CountryName);
+        for (var i = 0; i < data.Places.length; i++){
+        var html = $("saved")[i].innerHTML;
+        var template = Handlebars.compile(html);
+        var contentObj = template(data);
+        $("#results").append(contentObj)
+
+        // console.log(data);
+        // for (var i = 0; i < data.Places.length; i++) {
+        //     $("#results").html("<h4></h4>").text("Browse Flights for " + data.Places[i].CountryName);
+        //     var col = $("<div>").addClass("col s12 m7");
+        //     var card = $("<div>").addClass("card");
+        //     var title = $("<span>").addClass("card-title").text(data.Places[i].CountryName);
+        //     title.attr("id", "country-name");
+        //     var button = $("button").addClass("btn-floating halfway-fab waves-effect waves-light red")
+        //     button.attr("id", "save");
+        //     var content = $("<div>").addClass("card-content");
+        //     var p1 = $("<p>").addClass("card-text").text("City: " + data.Places[i].CityName);
+        //     p1.attr("id", "city-name");
+        //     // for loop for carrier array
+        //     // handle bar partial 
+        //     var p2 = $("<p>").addClass("card-text").text("Carrier: " + data.Carriers[0].Name);
+        //     p2.attr("id", "carrier-name");
 
 
             // for loop for the quotes
@@ -189,8 +205,8 @@ $(document).ready(function () {
 
 
             // merge all loop information at the end
-            col.append(card.append(content.append(title)));
-            console.log(col)
+            // col.append(card.append(content.append(title)));
+            // console.log(col)
             // merge together and put on page
             // , p1, p2, p3, p4, p5,button
             // Information which needs to be saved to the database
@@ -215,7 +231,7 @@ $(document).ready(function () {
             // carrier_id: $("#carrier-id").text().trim(),
             // ------------------- ------------------- ------------------- ------------------- -------------------
             // append onto the row
-            $("#results").append(col);
+            // $("#results").append(col);
         }
         console.log("Search Completed, all cards appended")
     }

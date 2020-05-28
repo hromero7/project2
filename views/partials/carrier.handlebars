@@ -1,9 +1,11 @@
 {{#each}}
-<p id="outbound-carrier">Outbound Carrier: {{departCarrier}}</p>
+<ul>
+<li id="outbound-carrier">Outbound Carrier: {{departCarrier}}</li>
 
-
+data.Carriers[0].Name
 {{!-- have if statement since outbound and inbound flights are tied to carrier ids rather than the loop objects --}}
 
 
-<p id="inbound-carrier">Inbound Carrier: {{homeCarrier}}</p>
+<li id="inbound-carrier">Inbound Carrier: {{homeCarrier}}</li>
+</ul>
 {{/each}}
