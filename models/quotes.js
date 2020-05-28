@@ -57,8 +57,8 @@ module.exports = function (sequelize, DataTypes) {
   {timestamps: false});
   // changed to hasOne
   // change foreign key to same name on both tables
-  Quote.associate = function(models) {
-    Quote.hasOne(models.Place);
-  };
+  // Quote.associate = function(models) {
+  //   Quote.hasOne(models.Place, {foreignKey: "placeId"});
+  // };
   return Quote;
 };
