@@ -1,23 +1,25 @@
 const express = require("express");
 const router = express.Router();
-
 const project = require("../models/project.js");
 
 // get route -> index
 router.get("/", function (req, res) {
-  project.selectAll(function (data) {
-    var hbsObject = {
-      app: data,
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
-  });
-  res.redirect("main");
-  res.render("main.handlebars");
+  res.redirect("/main");
+  //   res.render("main");
 });
 
-// use axios to render information to handlebars and have it thrown into the main page
+// renders the search result query
+// router.get("/main",function(req,res){
+//   var hbsObject = {
+//     qoute: data
+//   }
+//   console.log(hbsObject)
+// })
 
+// renders the get result query
+router.get("/main/travel", function (req, res) {
+  res.render("saved");
+});
 
 router.get("/main", function (req, res) {
   // express callback response by calling burger.selectAllBurger
