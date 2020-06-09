@@ -2,6 +2,45 @@ body {
   font: 100% Helvetica, sans-serif;
   color: #fe4fe4;
 }
+#title {
+  margin-left: 500px;
+  color: rgb(30, 30, 95);
+}
+#quote {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: azure;
+  width: 600px;
+  margin-left: 400px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 1rem;
+  margin-bottom: 20px;
+}
+
+#places {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: beige;
+  width: 600px;
+  margin-left: 400px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 1rem;
+  margin-bottom: 20px;
+}
+
+#carrier {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: bisque;
+  width: 600px;
+  margin-left: 400px;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 1rem;
+  margin-bottom: 20px;
+}
 
 .container {
   padding-top: 20px;
